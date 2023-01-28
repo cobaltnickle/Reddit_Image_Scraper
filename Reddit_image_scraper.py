@@ -299,49 +299,10 @@ def get_img_urls(sub, limit):
         end = time.time()
         log('Query return time for ALL:{},\nTotal Found: {}'.format(str(end - start), len(submissions)))
 
-        start = time.time()
-        submissions2 = [submission.url for submission in r.subreddit(sub).top(time_filter='year', limit=limit)]
-        end = time.time()
-        log('Query return time for year:{},\nTotal Found: {}'.format(str(end - start), len(submissions2)))
-
-        start = time.time()
-        submissions3 = [submission.url for submission in r.subreddit(sub).top(time_filter='month', limit=limit)]
-        end = time.time()
-        log('Query return time for month:{},\nTotal Found: {}'.format(str(end - start), len(submissions3)))
-
-        start = time.time()
-        submissions4 = [submission.url for submission in r.subreddit(sub).top(time_filter='week', limit=limit)]
-        end = time.time()
-        log('Query return time for week:{},\nTotal Found: {}'.format(str(end - start), len(submissions4)))
-
-        start = time.time()
-        submissions5 = [submission.url for submission in r.subreddit(sub).top(time_filter='hour', limit=limit)]
-        end = time.time()
-        log('Query return time for hour:{},\nTotal Found: {}'.format(str(end - start), len(submissions5)))
-
-        start = time.time()
-        submissions6 = [submission.url for submission in r.subreddit(sub).top(time_filter='day', limit=limit)]
-        end = time.time()
-        log('Query return time for day:{},\nTotal Found: {}'.format(str(end - start), len(submissions6)))
-
-        start = time.time()
-        submissions7 = [submission.url for submission in r.subreddit(sub).hot(limit=limit)]
-        end = time.time()
-        log('Query return time for HOT:{},\nTotal Found: {}'.format(str(end - start), len(submissions7)))
-
-        start = time.time()
-        submissions8 = [submission.url for submission in r.subreddit(sub).new(limit=limit)]
-        end = time.time()
-        log('Query return time for NEW:{},\nTotal Found: {}'.format(str(end - start), len(submissions8)))
-
-        start = time.time()
-        submissions9 = [submission.url for submission in r.subreddit(sub).rising(limit=limit)]
-        end = time.time()
-        log('Query return time for RISING:{},\nTotal Found: {}'.format(str(end - start), len(submissions9)))
 
         # combine them all, and de-duplicate them
         submissions = list(set(
-            submissions + submissions2 + submissions3 + submissions4 + submissions5 + submissions6 + submissions7 + submissions8 + submissions9))
+            submissions))
 
         log('total unique submissions: {}'.format(len(submissions)))
 
